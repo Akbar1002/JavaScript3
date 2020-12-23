@@ -1,27 +1,40 @@
 //XMLHttpRequest
-const xhr = new XMLHttpRequest();
-const url = (xhr.onload = function () {
-  JSON.parse(xhr.requestResponseText);
-  console.log();
-});
+function getInfo() {
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
 
-xhr.open('GET', url);
+  xhr.onload = function () {
+    const info = xhr.response;
+    if (xhr.status < 400) {
+      console.log(info);
+    } else {
+      console.log('HTTP Error', xhr.status); // this part Seems not working, maybe I didnot now how to show it
+    }
+  };
 
+  xhr.onerror = function () {
+    console.log('Something Went Wrong!');
+  };
+  const url = 'https://www.randomuser.me/api';
+  xhr.open('GET', url);
+  xhr.send();
+}
 
+getInfo();
 
+// //Axios
 
-//Axios
-const url = "https://www.randomuser.me/api";
-Axios.get(url);
-
-.then(function(response){
-    console.log(response)
-})
-
-.catch(function(error){
-    console.log(error)
-})
-
-.finally(function(){
-    console.log("All done!")
-})
+axios
+  .get('https://www.randomuser.me/api')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+    console.log();
+  });

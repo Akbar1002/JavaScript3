@@ -1,26 +1,42 @@
 //XMLHttpRequest
-const xhr = new XMLHttpRequest();
-const url = (xhr.onload = function () {
-  JSON.parse(xhr.requestResponseText);
-  console.log();
-});
+function getInfo() {
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
 
-xhr.open('GET', url);
+  xhr.onload = function () {
+    const info = xhr.response.results;
+    if (xhr.status < 400) {
+      console.log(info);
+    } else {
+      console.log('HTTP Error', xhr.status); // this part Seems not working, maybe I didnot now how to show it
+    }
+  };
 
+  xhr.onerror = function () {
+    console.log('Something Went Wrong!');
+  };
+  const url = 'https://xkcd.now.sh/?comic=latest';
+  xhr.open('GET', url);
+  xhr.send();
+}
 
-//Axios
-const url = "https://www.randomuser.me/api";
-Axios.get(url);
+getInfo();
 
-.then(function(response){
-    console.log(response)
-})
+// //Axios
 
-.catch(function(error){
-    console.log(error)
-})
+function getInfoWithAxios() {
+  axios
+    .get('https://xkcd.now.sh/?comic=latest')
 
-.finally(function(){
-    console.log("All done!")
-})
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function () {
+      console.log();
+    });
+}
 
+getInfoWithAxios();
