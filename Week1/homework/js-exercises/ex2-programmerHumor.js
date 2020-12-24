@@ -33,8 +33,7 @@ function getInfoWithAxios() {
       const div = document.createElement('div');
       const img = response.data.img;
       // main.innerHTML = img;
-      mian.appendChild(div);
-      div.appendChild(img);
+
       console.log(response);
     })
     .catch(function (error) {

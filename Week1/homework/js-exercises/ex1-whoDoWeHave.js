@@ -1,3 +1,14 @@
+const friendName = document.getElementById('friend');
+const Img = document.createElement('img');
+document.body.appendChild(Img);
+
+document.getElementById('btnXhr').onclick = function () {
+  getInfo();
+};
+document.getElementById('btnAxios').onclick = function () {
+  getInfoWithAxios();
+};
+
 //XMLHttpRequest
 function getInfo() {
   const xhr = new XMLHttpRequest();
@@ -5,6 +16,8 @@ function getInfo() {
 
   xhr.onload = function () {
     const info = xhr.response;
+    friendName.innerText = ` ${info.results[0].name.first} ${info.results[0].name.last}`;
+    Img.src = xhr.response.results[0].picture.large;
     if (xhr.status < 400) {
       console.log(info);
     } else {
@@ -20,10 +33,6 @@ function getInfo() {
   xhr.send();
 }
 
-document.getElementById('btn').onclick = function () {
-  getInfo();
-};
-
 getInfo();
 
 // //Axios
@@ -35,6 +44,8 @@ function getInfoWithAxios() {
   axios
     .get('https://www.randomuser.me/api')
     .then(function (response) {
+      friendName.innerText = ` ${response.data.results[0].name.first} ${response.data.results[0].name.last}`;
+      Img.src = response.data.results[0].picture.large;
       console.log(response);
     })
     .catch(function (error) {
