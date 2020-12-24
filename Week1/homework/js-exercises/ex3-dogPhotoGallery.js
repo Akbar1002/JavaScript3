@@ -29,7 +29,12 @@ function getInfoWithAxios() {
     .get('https://dog.ceo/api/breeds/image/random')
 
     .then(function (response) {
-      console.log(response);
+      const main = document.getElementById('main');
+      let item = document.createElement('item');
+      let img = response.data.message;
+      main.appendChild(img);
+
+      console.log(response.data.message);
     })
     .catch(function (error) {
       console.log(error);
@@ -40,3 +45,10 @@ function getInfoWithAxios() {
 }
 
 getInfoWithAxios();
+
+document.getElementById('click').onclick = function () {
+  getInfo();
+};
+document.getElementById('click-axios').onclick = function () {
+  getInfoWithAxios();
+};

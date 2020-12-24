@@ -20,21 +20,27 @@ function getInfo() {
   xhr.send();
 }
 
+document.getElementById('btn').onclick = function () {
+  getInfo();
+};
+
 getInfo();
 
 // //Axios
 
-axios
-  .get('https://www.randomuser.me/api')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-    console.log();
-  });
+// // const axios = require('axios');
+
+// Make a request for a user with a given ID
+function getInfoWithAxios() {
+  axios
+    .get('https://www.randomuser.me/api')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function () {});
+}
+
+getInfoWithAxios();
