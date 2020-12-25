@@ -1,6 +1,8 @@
 const friendName = document.getElementById('friend');
-const Img = document.createElement('img');
-document.body.appendChild(Img);
+const img = document.createElement('img');
+document.body.appendChild(img);
+img.style.width = '300px';
+img.style.height = '250px';
 
 document.getElementById('btnXhr').onclick = function () {
   getInfo();
@@ -17,7 +19,7 @@ function getInfo() {
   xhr.onload = function () {
     const info = xhr.response;
     friendName.innerText = ` ${info.results[0].name.first} ${info.results[0].name.last}`;
-    Img.src = xhr.response.results[0].picture.large;
+    img.src = info.results[0].picture.large;
     if (xhr.status < 400) {
       console.log(info);
     } else {
@@ -45,7 +47,7 @@ function getInfoWithAxios() {
     .get('https://www.randomuser.me/api')
     .then(function (response) {
       friendName.innerText = ` ${response.data.results[0].name.first} ${response.data.results[0].name.last}`;
-      Img.src = response.data.results[0].picture.large;
+      img.src = response.data.results[0].picture.large;
       console.log(response);
     })
     .catch(function (error) {

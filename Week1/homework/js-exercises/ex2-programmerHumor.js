@@ -1,26 +1,40 @@
-// //XMLHttpRequest
-// function getInfo() {
-//   const xhr = new XMLHttpRequest();
-//   xhr.responseType = 'json';
+const humor = document.getElementById('main');
+const img = document.createElement('img');
+document.body.appendChild(img);
 
-//   xhr.onload = function () {
-//     const info = xhr.response.results;
-//     if (xhr.status < 400) {
-//       console.log(info);
-//     } else {
-//       console.log('HTTP Error', xhr.status); // this part Seems not working, maybe I didnot now how to show it
-//     }
-//   };
+// document.getElementById('btnXhr').onclick = function () {
+//   getInfo();
+// };
 
-//   xhr.onerror = function () {
-//     console.log('Something Went Wrong!');
-//   };
-//   const url = 'https://xkcd.now.sh/?comic=latest';
-//   xhr.open('GET', url);
-//   xhr.send();
-// }
+// document.getElementById('btnAxios').onclick = function () {
+//   getInfoWithAxios();
+// };
 
-// getInfo();
+//XMLHttpRequest
+function getInfo() {
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+
+  xhr.onload = function () {
+    const info = xhr.response;
+    humor.innerText = `${info.alt}`;
+    img.src = info.img;
+    if (xhr.status < 400) {
+      console.log(info);
+    } else {
+      console.log('HTTP Error', xhr.status); // this part Seems not working, maybe I didnot now how to show it
+    }
+  };
+
+  xhr.onerror = function () {
+    console.log('Something Went Wrong!');
+  };
+  const url = 'https://xkcd.now.sh/?comic=latest';
+  xhr.open('GET', url);
+  xhr.send();
+}
+
+getInfo();
 
 // //Axios
 
@@ -29,10 +43,7 @@ function getInfoWithAxios() {
     .get('https://xkcd.now.sh/?comic=latest')
 
     .then(function (response) {
-      const main = document.getElementById('main');
-      const div = document.createElement('div');
-      const img = response.data.img;
-      // main.innerHTML = img;
+      img.src = response.data.img;
 
       console.log(response);
     })
