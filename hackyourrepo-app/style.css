@@ -1,3 +1,119 @@
 /* 
   Write here your CSS rules for HackYourRepo!
 */
+
+
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  font-family: Roboto;
+}
+
+
+body{
+  display:flex;
+  flex-direction:column;
+  background-color:#f4f7f5 ;
+}
+
+.topMenuPart{
+  align-self: center;
+  width:70%;
+  height:50px;
+  background-color:#575a5e;
+  display: flex;
+  align-items: center 
+}
+
+h2{
+  color:#ffffff;
+  vertical-align: middle;
+  margin-left: 30px;
+  font-size: 1rem;
+}
+
+h3{
+  color:black;
+  vertical-align: middle;
+  margin-left: 30px;
+  font-size: 1rem;
+}
+
+h4{
+  color:white;
+  vertical-align: middle;
+  margin-left: 30px;
+  margin-top:10px;
+  font-size: 0.7rem;
+}
+
+#repoSelection {
+  margin-left: 30px;
+}
+
+.mainContainer{
+  display:flex;
+  flex-direction: row;
+  align-self: center;
+  width:70%;
+  margin-top:5px;
+}
+
+
+.leftPart{
+  background-color:rgb(252, 252, 252);
+  width:49%;
+  height:120px;
+  border-radius: 3px;
+  box-shadow: 2px 2px #222823;
+  background-color: #a7a2a9;;
+}
+
+
+table, td {
+  margin-left: 7px;
+  margin-top: 7px;
+  font-size: 0.7rem;
+  line-height: 17px;
+}
+
+tbody>tr>:nth-child(1){
+  font-weight: bold;
+  width:90px;
+ }
+
+
+.rightPart{
+  margin-left: 2%;
+  width:49%;
+  height:50px;
+  border-radius: 3px;
+  box-shadow: 2px 2px #222823;
+  background-color: #a7a2a9;;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+ 
+
+  .topMenuPart{
+    width :100%;
+  }
+
+  .mainContainer{
+    flex-direction: column ;
+    width:90%;
+  }
+  .leftPart{
+    width:100%;
+    
+  }
+
+  .rightPart{
+    margin-top:30px;
+    width:100%;
+  }
+
+} 

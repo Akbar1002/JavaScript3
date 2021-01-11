@@ -20,6 +20,48 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <section class="topMenuPart">
+      <h2>HYF Repositories</h2>
+      <select name="text" id="repoSelection">
+        <option value="">Repo select</option>
+      </select>
+    </section>
+  
+    <div class="mainContainer">
+      <section class="leftPart">
+        
+        <table>
+          <tr>
+            <td>Repository:</td>
+            <td id="name">post-grad-ed</td>
+          </tr>
+
+          <tr>
+            <td>Description:</td>
+            <td id="description">Improve your coding skills mentored by a professional developer and solve
+               real technical assignment from real companies!</td></tr>
+          <tr>
+            <td>Forks:</td>
+            <td id="fork">27</td>
+          </tr>
+
+          <tr>
+            <td>Updated:</td>
+            <td id="update">2020-12-18 05:18:56</td>
+          </tr>
+
+        </table>
+      </section>
+      
+      <section class="rightPart">
+        <h4>Contributers</h4>
+        <ul id="myList">
+
+        </ul>
+      </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
+
