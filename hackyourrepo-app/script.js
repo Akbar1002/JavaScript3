@@ -163,7 +163,7 @@ function contributorsError(errorContributors) {
 
   errorMassage.innerText = 'Error: ' + errorContributors;
 }
-
+cd;
 /* STEP-2 GET DATA  */
 function getContributors(url) {
   fetch(url)
